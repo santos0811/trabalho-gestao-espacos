@@ -31,7 +31,7 @@
 }
 
 .etiqueta {
-  color: #e5b85b;
+  color: #83d3b9;
   font-size: .8rem;
   font-weight: 800;
   letter-spacing: .12em;
@@ -65,7 +65,7 @@ blockquote {
   position: relative;
   margin: 0 0 32px;
   padding: 24px 28px 24px 58px;
-  border-left: 5px solid #e5b85b;
+  border-left: 5px solid #83d3b9;
   border-radius: 0 14px 14px 0;
   background: #f6f7fb;
   color: #35416b;
@@ -79,7 +79,7 @@ blockquote::before {
   position: absolute;
   top: 8px;
   left: 16px;
-  color: #e5b85b;
+  color: #83d3b9;
   content: '“';
   font-size: 3.5rem;
   line-height: 1;
@@ -131,7 +131,7 @@ address {
   margin-top: 14px;
   padding: 12px 18px;
   border-radius: 8px;
-  background: #e5b85b;
+  background: #83d3b9;
   color: #172039;
   font-weight: 700;
   text-decoration: none;

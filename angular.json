@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "FoodFest": {
+    "WorkSpace": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -65,10 +65,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "FoodFest:build:production"
+              "buildTarget": "WorkSpace:build:production"
             },
             "development": {
-              "buildTarget": "FoodFest:build:development"
+              "buildTarget": "WorkSpace:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,14 @@
+<section>
+  <span class="badge">Encontre seu lugar</span><h1>Espaços de coworking</h1><p>Compare ambientes, recursos e valores por hora.</p>
+  <div class="filtros"><label for="busca">Buscar espaço<input id="busca" type="search" [(ngModel)]="busca" placeholder="Nome, localização, tipo ou recurso"></label><label class="check"><input type="checkbox" [(ngModel)]="somenteDisponiveis"> Somente disponíveis</label></div>
+  @if (loading) { <p role="status">Carregando espaços...</p> }
+  @if (errorMessage) { <p class="error-message" role="alert">{{ errorMessage }}</p><button (click)="carregar()">Tentar novamente</button> }
+  @if (!loading && !errorMessage) {
+    <p>{{ filtrados.length }} espaço(s) encontrado(s)</p>
+    <div class="espaco-grid">
+      @for (espaco of filtrados; track espaco.id) {
+        <article class="espaco-item"><span class="badge">{{ espaco.disponivel ? 'Disponível' : 'Indisponível' }}</span><h2>{{ espaco.nome }}</h2><p>{{ espaco.tipoEspaco }} · {{ espaco.capacidade }} pessoas</p><p>{{ espaco.localizacao }}</p><p class="recursos-texto">{{ espaco.recursos }}</p><strong>{{ espaco.precoHora | currency:'BRL' }} / hora</strong><div class="actions"><a [routerLink]="['/espacos', espaco.id]">Ver detalhes →</a></div></article>
+      } @empty { <p class="empty-state">Nenhum espaço encontrado para esta busca.</p> }
+    </div>
+  }
+</section>

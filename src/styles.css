@@ -18,3 +18,8 @@ app-root {
   min-height: 100vh;
   flex-direction: column;
 }
+
+:focus-visible {
+  outline: 3px solid #205c57;
+  outline-offset: 4px;
+}

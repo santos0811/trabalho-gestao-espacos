@@ -1,0 +1,13 @@
+@if (estado$ | async; as estado) {
+  @if (estado.loading) { <p role="status">Carregando espaço...</p> }
+  @else if (estado.espaco; as espaco) {
+    <article class="detalhe"><a class="voltar" routerLink="/espacos">← Voltar para espaços</a>
+      <section class="apresentacao"><div class="capa azul" aria-hidden="true"><span>▦</span><small>WorkSpace</small></div>
+        <div class="informacoes"><span class="categoria">{{ espaco.tipoEspaco }}</span><h1>{{ espaco.nome }}</h1><p class="introducao">Um ambiente para trabalhar, colaborar e desenvolver novas ideias.</p>
+          <div class="metadados"><div><span>Localização</span><strong>{{ espaco.localizacao }}</strong></div><div><span>Capacidade</span><strong>{{ espaco.capacidade }} pessoas</strong></div><div><span>Disponibilidade</span><strong>{{ espaco.disponivel ? 'Disponível' : 'Indisponível' }}</strong></div></div>
+          <p class="preco"><span>Preço por hora</span><strong>{{ espaco.precoHora | currency:'BRL' }}</strong></p>
+        </div>
+      </section><section class="descricao"><div class="texto"><span class="rotulo">Estrutura para o seu dia</span><h2>Recursos disponíveis</h2><p class="recursos-texto">{{ espaco.recursos }}</p></div></section>
+    </article>
+  } @else { <section class="nao-encontrado"><h1>Espaço não encontrado</h1><p>O espaço pode ter sido removido ou não foi possível acessar os dados. Confira sua conexão e tente novamente.</p><a routerLink="/espacos">Ver todos os espaços</a></section> }
+}

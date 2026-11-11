@@ -19,7 +19,7 @@
 }
 
 .voltar:hover {
-    color: #b17c18;
+    color: #287c70;
 }
 
 .apresentacao {
@@ -78,7 +78,7 @@
 }
 
 .capa.dourado {
-    background: linear-gradient(135deg, #9b6814, #e5b85b);
+    background: linear-gradient(135deg, #9b6814, #83d3b9);
 }
 
 .capa.verde {
@@ -102,7 +102,7 @@
 
 .categoria,
 .rotulo {
-    color: #b17c18;
+    color: #287c70;
     font-size: .78rem;
     font-weight: 800;
     letter-spacing: .12em;
@@ -210,7 +210,7 @@ aside {
     align-self: start;
     padding: 30px;
     border-radius: 18px;
-    background: #f7f4ec;
+    background: #edf7f3;
 }
 
 aside h3 {
@@ -234,7 +234,7 @@ aside li {
 }
 
 aside li span {
-    color: #b17c18;
+    color: #287c70;
     font-weight: 900;
 }
 
@@ -246,7 +246,7 @@ aside li span {
 }
 
 .nao-encontrado>span {
-    color: #e5b85b;
+    color: #83d3b9;
     font-size: 5rem;
     font-weight: 900;
 }

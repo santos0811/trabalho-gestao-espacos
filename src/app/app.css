@@ -1,5 +1,10 @@
 .conteudo-principal {
-  width: 100%;
+  width: min(100%, 1440px);
+  margin: 0 auto;
   flex: 1 0 auto;
   padding: 24px;
+}
+
+@media (max-width: 600px) {
+  .conteudo-principal { padding: 16px; }
 }

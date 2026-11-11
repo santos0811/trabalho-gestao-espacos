@@ -1,5 +1,5 @@
 {
-  "name": "food-fest",
+  "name": "workspace-coworking",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:FoodFest": "node dist/FoodFest/server/server.mjs"
+    "serve:ssr:WorkSpace": "node dist/WorkSpace/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@12.2.0",

@@ -1,42 +1,17 @@
-<section class="list-box">
-    <div class="top-bar">
-        <h2>Lista de Barracas</h2>
-        <a routerLink="/admin/form" class="btn">Novo</a>
-    </div>
-    @if(sucessMessage){
-        <div class="success-message">
-            {{ sucessMessage }}
-        </div>
+<section>
+  <div class="top-bar"><div><h1>Gestão de espaços</h1><p>Cadastre e acompanhe seus ambientes de coworking.</p></div><a routerLink="/admin/form" class="btn">Novo espaço</a></div>
+  @if (successMessage) { <p class="success-message" role="status">{{ successMessage }}</p> }
+  @if (errorMessage) { <p class="error-message" role="alert">{{ errorMessage }}</p><button (click)="loadEspacos()">Tentar novamente</button> }
+  @if (loading) { <p role="status">Carregando espaços...</p> }
+  @if (!loading && !errorMessage && espacos.length === 0) { <p class="empty-state">Nenhum espaço cadastrado. Cadastre o primeiro para começar.</p> }
+  <div class="espaco-grid">
+    @for (espaco of espacos; track espaco.id) {
+      <article class="espaco-item">
+        <span class="badge">{{ espaco.disponivel ? 'Disponível' : 'Indisponível' }}</span>
+        <h2>{{ espaco.nome }}</h2><p>{{ espaco.tipoEspaco }}</p><p>{{ espaco.localizacao }}</p>
+        <p>{{ espaco.capacidade }} pessoas · {{ espaco.precoHora | currency:'BRL' }} / hora</p>
+        <div class="actions"><a [routerLink]="['/admin/form', espaco.id]">Editar</a><button type="button" class="btn-delete" [disabled]="removingId !== null" (click)="remove(espaco)">{{ removingId === espaco.id ? 'Excluindo...' : 'Excluir' }}</button></div>
+      </article>
     }
-
-    @if(errorMessage){
-        <div class="error-message">
-            {{ errorMessage }}
-        </div>
-    }
-
-    @if (loading) {
-        <div class="loading">
-            <p>Carregando barracas...</p>
-        </div>
-    }
-    @if (!loading && barracas.length === 0){
-        <div class="empty-state">
-            <p>Nenhuma barraca encontrada.</p>
-        </div>
-    }
-
-    <div class="barraca-grid">
-        @for(barraca of barracas; track barraca.id){
-        <div class="barraca-item">
-            <h3>{{ barraca.nome }}</h3>
-            <p>{{ barraca.especialidade }}</p>
-            <p>{{ barraca.precoMedio}}</p>
-            <div class="actions">
-                <button type="button" class="btn-edit" (click)="edit(barraca.id)">Editar</button>
-                <button type="button" class="btn-delete" (click)="remove(barraca.id)">Excluir</button>
-            </div>
-        </div>
-        }
-    </div>
+  </div>
 </section>

@@ -1,59 +1,27 @@
-# FoodFest
+# WorkSpace — Gestão de Espaços Coworking
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.21.
+Projeto Angular para cadastro e gestão de salas e ambientes de coworking.
 
-## Development server
+## Executar
 
-To start a local development server, run:
-
-```bash
-ng serve
+```sh
+npm ci
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Acesse http://localhost:4200. Para validar: `npm run build` e `npm test -- --watch=false`.
 
-## Code scaffolding
+Para executar a versão compilada com renderização no servidor, use `npm run serve:ssr:WorkSpace` após o build. Os arquivos são gerados em `dist/WorkSpace`.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Funcionalidades
 
-```bash
-ng generate component component-name
-```
+- Listagem e busca por nome, localização, tipo ou recurso; filtro de disponibilidade.
+- Detalhes com capacidade, recursos e preço por hora em reais.
+- Cadastro, edição e exclusão na Área de gestão.
+- Interface `Espaco` com os oito campos do tema e identificador numérico.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Persistência
 
-```bash
-ng generate --help
-```
+A integração existente com Firebase Realtime Database foi mantida. O serviço `src/app/core/services/espaco.service.ts` usa a coleção `/espacos` no banco previamente configurado. Os registros de `/barracas` não são migrados nem alterados. A nova coleção começa vazia.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+As operações dependem de conexão e das regras de acesso do Firebase. Para usar outro banco, ajuste `apiUrl` no serviço. O projeto não implementa autenticação nem reservas; a disponibilidade é informada no cadastro.

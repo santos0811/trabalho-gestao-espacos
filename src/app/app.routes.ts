@@ -3,47 +3,47 @@ export const routes: Routes = [
   {
     path: "",
     loadComponent: () => import("./features/home/home").then((m) => m.Home),
-    title: "Início | FoodFest",
+    title: "Início | WorkSpace",
   },
   {
     path: "sobre",
     loadComponent: () => import("./features/sobre/sobre").then((m) => m.Sobre),
-    title: "Sobre | FoodFest",
+    title: "Sobre | WorkSpace",
   },
   {
-    path: "barracas",
+    path: "espacos",
     loadComponent: () =>
-      import("./features/barracas/barracas").then((m) => m.Barracas),
-    title: "Barracas | FoodFest",
+      import("./features/espacos/espacos").then((m) => m.Espacos),
+    title: "Espaços | WorkSpace",
   },
   {
-    path: "barracas/:id",
+    path: "espacos/:id",
     loadComponent: () =>
-      import("./features/detalhe-barraca/detalhe-barraca").then(
-        (m) => m.DetalheBarraca,
+      import("./features/detalhe-espaco/detalhe-espaco").then(
+        (m) => m.DetalheEspaco,
       ),
-    title: "Detalhes da barraca | FoodFest",
+    title: "Detalhes do espaço | WorkSpace",
   },
   {
     path: "admin",
     loadComponent: () => import("./features/admin/admin").then((m) => m.Admin),
-    title: "Admin | FoodFest",
+    title: "Admin | WorkSpace",
   },
   {
     path: "admin/form",
     loadComponent: () =>
-      import("./features/manutencao-barraca/manutencao-barraca").then(
-        (m) => m.ManutencaoBarraca,
+      import("./features/manutencao-espaco/manutencao-espaco").then(
+        (m) => m.ManutencaoEspaco,
       ),
-    title: "Nova barraca | FoodFest",
+    title: "Novo espaço | WorkSpace",
   },
   {
     path: "admin/form/:id",
     loadComponent: () =>
-      import("./features/manutencao-barraca/manutencao-barraca").then(
-        (m) => m.ManutencaoBarraca,
+      import("./features/manutencao-espaco/manutencao-espaco").then(
+        (m) => m.ManutencaoEspaco,
       ),
-    title: "Editar barraca | FoodFest",
+    title: "Editar espaço | WorkSpace",
   },
   { path: "**", redirectTo: "" },
 ];
