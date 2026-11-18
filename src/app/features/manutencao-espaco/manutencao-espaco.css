@@ -6,6 +6,7 @@
 }
 
 form,
+fieldset,
 .field {
     display: flex;
     flex-direction: column;
@@ -38,7 +39,7 @@ textarea {
 
 .field small,
 .error-message {
-    color: #18b459;
+    color: #b42318;
 }
 
 .success-message {
@@ -74,4 +75,18 @@ button {
 .add-button,
 .remove-button {
     align-self: flex-start;
+}
+fieldset {
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-width: 0;
+    gap: 1.25rem;
+}
+input[aria-invalid="true"], textarea[aria-invalid="true"] {
+    border: 2px solid #b42318;
+}
+button:disabled {
+    cursor: wait;
+    opacity: 0.65;
 }

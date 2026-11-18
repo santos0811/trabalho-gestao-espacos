@@ -1,4 +1,4 @@
-﻿<div class="form-box">
+<div class="form-box">
   <h2>{{ editingId !== null ? 'Editar espaço' : 'Adicionar espaço' }}</h2>
 
   @if (loadingData) {
@@ -11,31 +11,51 @@
     <div class="error-message" role="alert">{{ errorMessage }}</div>
   }
 
+  <p>Preencha os campos abaixo. O identificador é gerado automaticamente.</p>
   <form [formGroup]="form" (ngSubmit)="submit()">
+    <fieldset [disabled]="loading || loadingData || loadFailed || !!successMessage">
     <div class="field">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" formControlName="nome" maxlength="100">
+      <input type="text" id="nome" required aria-describedby="nome-erro" [attr.aria-invalid]="form.controls.nome.touched && form.controls.nome.invalid" formControlName="nome" maxlength="100">
+      @if (form.controls.nome.touched && form.controls.nome.invalid) {
+        <small id="nome-erro" class="field-error">Informe o nome do espaço com até 100 caracteres.</small>
+      }
       <span class="character-count">{{ form.controls.nome.value.length }}/100</span>
     </div>
     <div class="field">
       <label for="localizacao">Localização:</label>
-      <input type="text" id="localizacao" formControlName="localizacao">
+      <input type="text" id="localizacao" required aria-describedby="localizacao-erro" [attr.aria-invalid]="form.controls.localizacao.touched && form.controls.localizacao.invalid" formControlName="localizacao">
+      @if (form.controls.localizacao.touched && form.controls.localizacao.invalid) {
+        <small id="localizacao-erro" class="field-error">Informe a localização do espaço.</small>
+      }
     </div>
     <div class="field">
       <label for="capacidade">Capacidade:</label>
-      <input type="number" id="capacidade" formControlName="capacidade" min="1" step="1">
+      <input type="number" id="capacidade" required aria-describedby="capacidade-erro" [attr.aria-invalid]="form.controls.capacidade.touched && form.controls.capacidade.invalid" formControlName="capacidade" min="1" step="1">
+      @if (form.controls.capacidade.touched && form.controls.capacidade.invalid) {
+        <small id="capacidade-erro" class="field-error">Informe uma capacidade inteira de pelo menos 1 pessoa.</small>
+      }
     </div>
     <div class="field">
       <label for="recursos">Recursos:</label>
-      <textarea id="recursos" formControlName="recursos" rows="3"></textarea>
+      <textarea id="recursos" required aria-describedby="recursos-erro" [attr.aria-invalid]="form.controls.recursos.touched && form.controls.recursos.invalid" formControlName="recursos" rows="3"></textarea>
+      @if (form.controls.recursos.touched && form.controls.recursos.invalid) {
+        <small id="recursos-erro" class="field-error">Informe os recursos disponíveis, como Wi-Fi, projetor ou ar-condicionado.</small>
+      }
     </div>
     <div class="field">
-      <label for="precoHora">Preço por hora:</label>
-      <input type="number" id="precoHora" formControlName="precoHora" min="0" step="0.01">
+      <label for="precoHora">Preço por hora (R$):</label>
+      <input type="number" id="precoHora" required aria-describedby="precoHora-erro" [attr.aria-invalid]="form.controls.precoHora.touched && form.controls.precoHora.invalid" formControlName="precoHora" min="0" step="0.01">
+      @if (form.controls.precoHora.touched && form.controls.precoHora.invalid) {
+        <small id="precoHora-erro" class="field-error">Informe um valor a partir de zero, com no máximo duas casas decimais.</small>
+      }
     </div>
     <div class="field">
       <label for="tipoEspaco">Tipo de espaço:</label>
-      <input type="text" id="tipoEspaco" formControlName="tipoEspaco">
+      <input type="text" id="tipoEspaco" required aria-describedby="tipoEspaco-erro" [attr.aria-invalid]="form.controls.tipoEspaco.touched && form.controls.tipoEspaco.invalid" formControlName="tipoEspaco">
+      @if (form.controls.tipoEspaco.touched && form.controls.tipoEspaco.invalid) {
+        <small id="tipoEspaco-erro" class="field-error">Informe o tipo, como sala de reunião, escritório ou estação de trabalho.</small>
+      }
     </div>
     <div class="field checkbox-field">
       <input type="checkbox" id="disponivel" formControlName="disponivel">
@@ -45,7 +65,8 @@
     @if (form.invalid && form.touched) {
       <div class="error-message" role="alert">Preencha todos os campos obrigatórios com valores válidos.</div>
     }
-    <button type="button" routerLink="/admin">Voltar</button>
+    </fieldset>
+    <a routerLink="/admin">Voltar para a gestão</a>
     <button type="submit" [disabled]="loading || loadingData || loadFailed || !!successMessage">
       @if (loading) {
         Salvando...

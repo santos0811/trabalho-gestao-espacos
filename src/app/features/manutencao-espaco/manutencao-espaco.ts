@@ -20,11 +20,11 @@ export class ManutencaoEspaco {
   errorMessage = '';
   successMessage = '';
   form = this.fb.nonNullable.group({
-    nome: ['', [Validators.required, Validators.pattern(/\S/)]],
+    nome: ['', [Validators.required, Validators.pattern(/\S/), Validators.maxLength(100)]],
     localizacao: ['', [Validators.required, Validators.pattern(/\S/)]],
     capacidade: [1, [Validators.required, Validators.min(1), Validators.pattern(/^\d+$/)]],
     recursos: ['', [Validators.required, Validators.pattern(/\S/)]],
-    precoHora: [0, [Validators.required, Validators.min(0)]],
+    precoHora: [0, [Validators.required, Validators.min(0), Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
     tipoEspaco: ['', [Validators.required, Validators.pattern(/\S/)]],
     disponivel: [true],
   });
